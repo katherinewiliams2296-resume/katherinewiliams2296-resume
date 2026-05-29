@@ -690,8 +690,6 @@ footer{background:#060F1C;padding:64px 5% 28px;border-top:1px solid rgba(255,255
           <li><span class="chk">&#10003;</span>Professional Resume Rewrite</li>
           <li><span class="chk">&#10003;</span>ATS Keyword Optimization</li>
           <li><span class="chk">&#10003;</span>PDF and Word Delivery</li>
-          <li><span class="chk">&#10003;</span>1 Round of Revisions</li>
-          <li><span class="chk">&#10003;</span>3-Day Turnaround</li>
           <li><span class="chk">&#10003;</span>Email Support</li>
         </ul>
         <a href="#contact" class="btn-price btn-navy">Get Started</a>
@@ -707,8 +705,6 @@ footer{background:#060F1C;padding:64px 5% 28px;border-top:1px solid rgba(255,255
           <li><span class="chk">&#10003;</span>Everything in Starter</li>
           <li><span class="chk">&#10003;</span>Custom Cover Letter</li>
           <li><span class="chk">&#10003;</span>LinkedIn Profile Rewrite</li>
-          <li><span class="chk">&#10003;</span>3 Rounds of Revisions</li>
-          <li><span class="chk">&#10003;</span>48-Hour Turnaround</li>
           <li><span class="chk">&#10003;</span>30-Day Follow-Up Support</li>
         </ul>
         <a href="#contact" class="btn-price btn-gold">Get Started</a>
@@ -723,8 +719,6 @@ footer{background:#060F1C;padding:64px 5% 28px;border-top:1px solid rgba(255,255
           <li><span class="chk">&#10003;</span>Everything in Professional</li>
           <li><span class="chk">&#10003;</span>Executive Bio or Board Profile</li>
           <li><span class="chk">&#10003;</span>Strategy Consultation Call</li>
-          <li><span class="chk">&#10003;</span>Unlimited Revisions</li>
-          <li><span class="chk">&#10003;</span>Priority 24-Hour Turnaround</li>
           <li><span class="chk">&#10003;</span>60-Day Ongoing Support</li>
         </ul>
         <a href="#contact" class="btn-price btn-navy">Get Started</a>
@@ -855,28 +849,29 @@ footer{background:#060F1C;padding:64px 5% 28px;border-top:1px solid rgba(255,255
         </div>
       </div>
       <div class="contact-form-box">
-        <form id="contactForm" onsubmit="handleSubmit(event)">
+        <form id="contactForm" action="https://formspree.io/f/mlgvveel" method="POST">
+          <input type="hidden" name="_subject" value="New Career Services Inquiry">
           <div class="form-row">
             <div class="form-group">
               <label>First Name</label>
-              <input type="text" id="fname" placeholder="Jane" required>
+              <input type="text" name="first_name" placeholder="Jane" required>
             </div>
             <div class="form-group">
               <label>Last Name</label>
-              <input type="text" id="lname" placeholder="Doe" required>
+              <input type="text" name="last_name" placeholder="Doe" required>
             </div>
           </div>
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" id="femail" placeholder="jane@email.com" required>
+            <input type="email" name="email" placeholder="jane@email.com" required>
           </div>
           <div class="form-group">
             <label>Phone (Optional)</label>
-            <input type="tel" id="fphone" placeholder="+1 555 000 0000">
+            <input type="tel" name="phone" placeholder="+1 555 000 0000">
           </div>
           <div class="form-group">
             <label>Service Needed</label>
-            <select id="fservice">
+            <select name="service">
               <option value="">Select a service...</option>
               <option>Resume Writing (Starter)</option>
               <option>Resume Writing (Professional)</option>
@@ -890,15 +885,10 @@ footer{background:#060F1C;padding:64px 5% 28px;border-top:1px solid rgba(255,255
           </div>
           <div class="form-group">
             <label>Your Message</label>
-            <textarea id="fmessage" placeholder="Tell us about your career goals, current role, and what you are looking to achieve..."></textarea>
+            <textarea name="message" placeholder="Tell us about your career goals, current role, and what you are looking to achieve..."></textarea>
           </div>
           <button type="submit" class="btn-submit">Send Message &#8594;</button>
         </form>
-        <div class="success-msg" id="successMsg">
-          <div style="font-size:36px;margin-bottom:12px;">&#10003;</div>
-          <strong>Message received!</strong><br>
-          We will be in touch within 24 hours at your provided email address. Thank you for choosing Katherine Career Services.
-        </div>
       </div>
     </div>
   </div>
@@ -969,32 +959,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
     if (!open) { item.classList.add('active'); ans.classList.add('open'); }
   });
 });
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const fname = document.getElementById('fname').value;
-  const lname = document.getElementById('lname').value;
-  const email = document.getElementById('femail').value;
-  const phone = document.getElementById('fphone').value;
-  const service = document.getElementById('fservice').value;
-  const message = document.getElementById('fmessage').value;
-
-  const subject = encodeURIComponent('New Career Services Inquiry from ' + fname + ' ' + lname);
-  const body = encodeURIComponent(
-    'Name: ' + fname + ' ' + lname + '\n' +
-    'Email: ' + email + '\n' +
-    'Phone: ' + (phone || 'Not provided') + '\n' +
-    'Service Requested: ' + (service || 'Not specified') + '\n\n' +
-    'Message:\n' + message
-  );
-
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-
-  setTimeout(() => {
-    window.location.href = 'mailto:katherinewiliams2296@gmail.com?subject=' + subject + '&body=' + body;
-  }, 600);
-}
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
